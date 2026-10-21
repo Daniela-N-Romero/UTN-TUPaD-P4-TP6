@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.core.database import create_db_and_tables
 from app.categoria.router import router as categoria_router
+from app.core.database import create_db_and_tables
+from app.core.seed import ejecutar_seed
 from app.producto.router import router as producto_router
 
 app = FastAPI()
@@ -18,6 +19,7 @@ allow_headers=['*'],
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
+    ejecutar_seed()
 
 # Incluimos las rutas de categorías
 app.include_router(categoria_router)

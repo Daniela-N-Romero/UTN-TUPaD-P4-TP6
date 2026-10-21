@@ -16,5 +16,5 @@ class CategoriaRead(CategoriaBase):
 
 # Esquema para la actualización opcional (PUT / PATCH)
 class CategoriaUpdate(SQLModel):
-    nombre: Optional[str] = None
-    descripcion: Optional[str] = None
+    nombre: str | None = None
+    descripcion: str | None = None

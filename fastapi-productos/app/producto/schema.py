@@ -19,8 +19,8 @@ class ProductoRead(ProductoBase):
 
 # Esquema para la actualización opcional (PUT / PATCH)
 class ProductoUpdate(SQLModel):
-    nombre: Optional[str] = None
-    descripcion: Optional[str] = None
-    precio_base: Optional[str] = None
-    imagen_url: Optional[list] = None
-    disponible: Optional[bool] = None
+    nombre: str | None = None
+    descripcion: str | None = None
+    precio_base: str | None = None
+    imagen_url: list | None = None
+    disponible: bool | None = None

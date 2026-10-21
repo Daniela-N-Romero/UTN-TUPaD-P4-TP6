@@ -1,4 +1,8 @@
-### Obtener todas las categorías
+### ==========================================
+### SECCIÓN: CATEGORÍAS
+### ==========================================
+
+### Listar todas las categorías
 GET http://localhost:8000/categorias
 
 ### Crear una categoría
@@ -6,11 +10,31 @@ POST http://localhost:8000/categorias
 Content-Type: application/json
 
 {
-  "nombre": "Pizzas",
-  "descripcion": "Pizzas artesanales con masa fresca"
+  "nombre": "Hamburguesas",
+  "descripcion": "Hamburguesas de todas las variedades"
 }
 
-### Obtener todos los productos
+### Traer una categoría por ID
+GET http://localhost:8000/categorias/3
+
+### Actualizar una categoría 
+PUT http://localhost:8000/categorias/3
+Content-Type: application/json
+
+{
+  "nombre": "Hamburguesas",
+  "descripcion": "Hamburguesas de todas las variedades con ingredientes premium"
+}
+
+### Eliminar una categoría
+DELETE http://localhost:8000/categorias/1
+
+
+### ==========================================
+### SECCIÓN: PRODUCTOS
+### ==========================================
+
+### Listar todos los productos
 GET http://localhost:8000/productos
 
 ### Crear un producto
@@ -18,12 +42,50 @@ POST http://localhost:8000/productos
 Content-Type: application/json
 
 {
-  "nombre": "Pizza Mozzarella",
-  "descripcion": "Salsa de tomate, mozzarella y orégano",
-  "precio_base": "8500",
-  "imagen_url": ["https://ejemplo.com/pizza.jpg"],
+  "nombre": "Pizza Margarita",
+  "descripcion": "Salsa de tomate, tomates en rodajas y orégano",
+  "precio_base": "10000",
+  "imagen_url": ["https://ejemplo.com/pizza_margarita.jpg"],
   "disponible": true
 }
 
+### Traer un producto por ID
+GET http://localhost:8000/productos/3
+
+### Actualizar un producto
+PUT http://localhost:8000/productos/3
+Content-Type: application/json
+
+{
+  "nombre": "Pizza Margarita Extra Grande",
+  "descripcion": "Salsa de tomate, tomates en rodajas y orégano",
+  "precio_base": "10000",
+  "imagen_url": ["https://ejemplo.com/pizza_margarita.jpg"],
+  "disponible": true
+}
+
+### 10. Eliminar un producto
+DELETE http://localhost:8000/productos/1
+
+
+### ==========================================
+### SECCIÓN: RELACIONES (PRODUCTO - CATEGORÍA)
+### ==========================================
+
 ### Asociar Producto a Categoría (Producto ID 1, Categoría ID 1)
 POST http://localhost:8000/productos/1/categorias/1
+
+### Asociar Producto a Categoría (Producto ID 3, Categoría ID 1)
+POST http://localhost:8000/productos/3/categorias/1
+
+### Desasociar Producto de Categoría (Producto ID 1, Categoría ID 1)
+DELETE http://localhost:8000/productos/1/categorias/1
+
+### Traer relacion válida (solo IDs)
+GET http://localhost:8000/productos/1/categorias/1
+
+### Traer relacion inválida
+GET http://localhost:8000/productos/1/categorias/1000
+
+### Traer relacion válida con todos los datos (con objetos completos)
+GET http://localhost:8000/productos/1/categorias/1/full
