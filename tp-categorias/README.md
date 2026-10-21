@@ -1,75 +1,48 @@
-# React + TypeScript + Vite
+# Frontend - Gestión de Categorías (UTN TUPaD)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con **React**, **TypeScript**, **Vite** y **Tailwind CSS** para el Trabajo Práctico de Programación IV (Unidad 6).
 
-Currently, two official plugins are available:
+Consume la API REST desarrollada en FastAPI utilizando `fetch` nativo de JavaScript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📋 Características Principales
 
-## React Compiler
+* **Integración Full Stack:** CRUD completo de categorías conectado al backend en tiempo real.
+* **Custom Hook (`useCategorias`):** Aislamiento de la lógica de negocio, manejo de estado (`useState`, `useEffect`) y peticiones HTTP.
+* **Componentes:**
+  * `Navbar`: Barra de navegación principal.
+  * `CategoriaList`: Renderizado reactivo de la lista de categorías.
+  * `CategoriaCard`: Tarjeta individual con acciones de edición y eliminación.
+  * `CategoriaModal`: Formulario interactivo en modal para altas y modificaciones.
+* **Tipado Estricto:** Tipos e interfaces definidos con TypeScript (`Categoria`).
+* **Diseño:** Estilizado mediante clases de Tailwind CSS.
+* **Configuración por Entorno:** Manejo de la URL base de la API a través de variables de entorno (`.env`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Requisitos Previos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Node.js** (v18 o superior)
+* **npm** o **pnpm**
+* Tener en ejecución el backend en `http://localhost:8000`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Instalación y Ejecución
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Ubicarse en la carpeta del frontend:**
+   ```powershell
+   cd tp-categorias
 
-```
+2. **Instalar dependencias:**
+   ```powershell
+   npm install
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+3. **Configurar las variables de entorno:**
+   Asegúrate de tener un archivo .env en la raíz de tp-categorias con el siguiente contenido:
+   ```powershell
+   VITE_API_URL=http://localhost:8000
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+3. **Iniciar el servidor de desarrollo:**
+   Asegúrate de tener en ejecución también el backend en `http://localhost:8000`:
+   ```powershell
+   npm run dev
