@@ -1,0 +1,29 @@
+### Obtener todas las categorías
+GET http://localhost:8000/categorias
+
+### Crear una categoría
+POST http://localhost:8000/categorias
+Content-Type: application/json
+
+{
+  "nombre": "Pizzas",
+  "descripcion": "Pizzas artesanales con masa fresca"
+}
+
+### Obtener todos los productos
+GET http://localhost:8000/productos
+
+### Crear un producto
+POST http://localhost:8000/productos
+Content-Type: application/json
+
+{
+  "nombre": "Pizza Mozzarella",
+  "descripcion": "Salsa de tomate, mozzarella y orégano",
+  "precio_base": "8500",
+  "imagen_url": ["https://ejemplo.com/pizza.jpg"],
+  "disponible": true
+}
+
+### Asociar Producto a Categoría (Producto ID 1, Categoría ID 1)
+POST http://localhost:8000/productos/1/categorias/1
